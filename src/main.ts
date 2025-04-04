@@ -11,13 +11,12 @@ async function bootstrap() {
   const NODE_ENV = config.get<string>('NODE_ENV', 'production');
 
   if (NODE_ENV === 'development') {
-    swagger(app);
+    await swagger(app);
     Logger.log(
       `Swagger is running on: http://localhost:${port}/api`,
       'Swagger',
     );
   }
-  swagger(app);
   await app.listen(port);
   Logger.log(`Server is running on: http://localhost:${port}`, 'Bootstrap');
 }
